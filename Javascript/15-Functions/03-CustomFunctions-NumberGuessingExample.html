@@ -1,0 +1,72 @@
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Javascript - Loops</title>
+
+  </head>
+
+  <body>
+
+    <p>
+      How may fingers are you holding up?
+    </p>
+    <p>
+      <select id="myNumber">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+
+      <button id="guess">Guess</button>
+    </p>
+
+    <script type="text/javascript">
+
+      function doAGuess (correctAnswer) {
+
+        var guessNumber = Math.random();
+
+        guessNumber = guessNumber * 6;
+        guessNumber = Math.floor(guessNumber);
+
+        if (correctAnswer === guessNumber) {
+          //Computer is correct
+          return true;
+
+        } else {
+          return false;
+        }
+      }
+
+      document.getElementById("guess").onclick = function() {
+
+        var myNumber = document.getElementById("myNumber").value;
+        var gotIt = false;
+        var numberOfGuesses = 1;
+
+        while (gotIt === false) {
+          if (doAGuess(myNumber) === true) {
+            gotIt = true;
+            alert("Got it! It was a = " + myNumber + ". It took me " + numberOfGuesses + " guesses");
+
+          } else {
+            numberOfGuesses++;
+            if (numberOfGuesses > 100) {
+              gotIt = true;
+              alert("Something goes wrong! I can't guess how many fingers you are holding up.")
+            }
+          }
+
+        }
+
+      }
+
+
+    </script>
+
+  </body>
+</html>
